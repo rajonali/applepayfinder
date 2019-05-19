@@ -9,7 +9,7 @@ import { Card, CardImg, CardText, CardBody,
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {input:"",places:placesData};
+        this.state = {input:"",places:listedPlacesMockData};
       }
     
     
@@ -20,16 +20,8 @@ class Home extends Component {
     componentDidMount(props){
         //console.log(this.state.places);
         //console.log(['das','asda']);
-        this.arrayToCards();
     }
     
-    mappingFunction = p => <li key={p.name}> {p.address}</li>;
-
-    arrayToCards(props){
-        this.state.places.map((place) => (
-            <p>place.name</p>
-        ))
-    }
 
     render() {
         return (<div>
@@ -54,7 +46,7 @@ class Home extends Component {
          <InputGroup>
            <Input onChange={ this.handleChange.bind(this) } />
            <InputGroupAddon addonType="append">
-             <Button onClick={this.onClickSearch}  color="secondary"><strong>🔎 Search</strong></Button>
+             <Button onClick={this.onClickSearch}  color="secondary"><strong>🔎</strong></Button>
            </InputGroupAddon>
          </InputGroup>
          <br />
@@ -83,15 +75,26 @@ class Home extends Component {
 }
 
 
-const placesData = [
+const listedPlacesMockData= [
     {
       "name": "Mcdonalds",
-      "address": "13033 cd"
+      "address": "4979 Jones Creek Rd, Baton Rouge, LA 70817"
     },
     {
       "name": "Taco Bell",
-      "address": "1343fsd"
+      "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817"
     }
+]
+
+const googlePlacesMockData = [
+    {
+        "name": "Mcdonalds",
+        "address": "4979 Jones Creek Rd, Baton Rouge, LA 70817"
+      },
+      {
+        "name": "Taco Bell",
+        "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817"
+      }
 ]
 
   
