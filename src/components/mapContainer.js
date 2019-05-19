@@ -1,56 +1,124 @@
 import React from "react";
 import { GoogleApiWrapper, Map, Marker } from "google-maps-react";
 
+
 import Geocode from "react-geocode";
 
 Geocode.setApiKey("AIzaSyCAKYwzvX26frpBq3Wi_d483YybzulqaLw");
 
+
 export class MapContainer extends React.Component {
-  state = { userLocation: { lat: 0, lng: 0 }, loading: true };
+
+
+
+
+  constructor(props) {
+    super(props);
+    this.state = { sampleLat : " -22.17179", sampleLng:" -39.16249", userLocation: { lat: "", lng: "" }, loading: true, placeData:[] };
+  }
 
   componentDidMount(props) {
+
+    console.log()
+
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
 
         this.setState({
           userLocation: { lat: latitude, lng: longitude },
-          loading: false
+          loading: false,
+          placeData: this.props.placeData
         });
-        console.log(this.state.userLocation);
       },
       () => {
         this.setState({ loading: false });
       }
+      
     );
+
+    
+    //console.log("lol"+ this.getCoordsFromAddr("4979 Jones Creek Rd, Baton Rouge, LA 70817"))
+    //console.log(this.state.placeData);
   }
 
-  render() {
+
+  //not in use
+  getAddrFromCoords(address){
+    console.log("Address: " +address);
     const { loading, userLocation } = this.state;
     const { google } = this.props;
 
     Geocode.fromLatLng("30.406178699999998", "-91.0343297").then(
       response => {
         const address = response.results[0].formatted_address;
-        console.log(address);
+        //console.log(address);
       },
       error => {
         console.error(error);
       }
     );
+  }
+
+
+
+  getCoordsFromAddr(address){
+    const { loading, userLocation } = this.state;
+    const { google } = this.props;
+
+
+    Geocode.fromAddress(address).then(
+      response => {
+      var lat = response.results[0].geometry.location['lat'];
+      var lng = response.results[0].geometry.location['lng'];
+      console.log(lat,lng);
+    },
+      error => {
+        console.error(error);
+      }
+    )
+    
+  }
+
+
+  
+
+  
+  render() {
+    this.getCoordsFromAddr('11310 Airline Hwy, Baton Rouge, LA 70816');
+
+    const { loading, userLocation } = this.state;
+    const { google } = this.props;
 
     
     if (loading) {
       return null;
     }
 
-    return <Map google={google} initialCenter={userLocation} zoom={10} style={{  width: '95%', height: '95%'}}>
-        <Marker
-    title={'The marker`s title will appear as a tooltip.'}
-    name={'SOMA'}
-    position={this.state.userLocation} />
+    return (
+      <div>
 
-    </Map>;
+    <Map google={google} initialCenter={userLocation} zoom={1} style={{  width: '95%', height: '625px'}}>
+  
+
+{this
+                                    .state
+                                    .placeData
+                                    .map(p => (
+                                      <Marker
+    key={p.id}
+    title={'The marker`s title will appear as a tooltip.'}
+    name={p.name}
+    position={p.coordinates}
+    />
+
+                                    ))}
+
+
+
+    </Map>
+    </div>
+    )
   }
 }
 
