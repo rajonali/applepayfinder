@@ -33,24 +33,12 @@ class Home extends Component {
 
     componentDidMount(props) {
         //console.log(this.state.places); console.log(['das','asda']);
-        navigator.geolocation.getCurrentPosition(
-            position => {
-              const { latitude, longitude } = position.coords;
-      
-              this.setState({
-                userLocation: { lat: latitude, lng: longitude },
-                loading: false,
-                placeData: this.props.placeData
-              });
-            })
     }
 
     submitForReview(address) {
         console.log({address});
     }
 
-
-    
     render() {
         return (
             <div>

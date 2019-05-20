@@ -28,4 +28,4 @@ Find Apple Pay accepting establishments from a user curated repository of verifi
 
 Demo:
 -----
-![](gif_previews/home.gif)
+![](demo/home_page.png)
