@@ -118,17 +118,17 @@ class Home extends Component {
 const listedPlacesMockData = [
     {
         "name": "McDonalds",
-        "coordinates": {lat: 37.759703, lng: -122.428093},
+        "coordinates": {lat: 30.403849, lng: -91.053273},
         "address": "4979 Jones Creek Rd, Baton Rouge, LA 70817",
         "hasApplePay": true
     }, {
         "name": "Taco Bell",
-        "coordinates": {lat: 54.10941, lng: -12.74833},
+        "coordinates": {lat: 29.973993, lng: -90.143369},
         "address": "1601 Airline Dr, Metairie, LA 70001",
         "hasApplePay": false
     }, {
         "name": "Wendy's",
-        "coordinates": {lat: -51.62397, lng: -173.95063},
+        "coordinates": {lat: 30.408704, lng: -91.015029},
         "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817",
         "hasApplePay": false
     }, {
@@ -156,20 +156,18 @@ const listedPlacesMockData = [
 
 const googlePlacesMockData = [
     {
-        "name": "Jack in the Box",
-        "coordinates": {lat: -75.30763, lng: -41.20202},
-        "address": "11310 Airline Hwy, Baton Rouge, LA 70816",
+        "name": "McDonalds",
+        "coordinates": {lat: "30.403849", lng: "-91.053273"},
+        "address": "4979 Jones Creek Rd, Baton Rouge, LA 70817",
         "hasApplePay": true
-    }, 
-    {
-        "name": "Sonic Drive-In",
-        "coordinates": {lat: 50.06358, lng: -129.64266},
-        "address": "11145 Coursey Blvd, Baton Rouge, LA 70816",
-        "hasApplePay": false
-    },
-    {
-        "name": "VapingCraze",
-        "coordinates": {lat: 48.65831, lng: -36.89748},
+    }, {
+        "name": "Taco Bell",
+        "coordinates": {lat: "30.357758", lng: "-91.006925"},
+        "address": "15168 Airline Hwy Suite B, Baton Rouge, LA 70809",
+        "hasApplePay": true
+    }, {
+        "name": "Wendy's",
+        "coordinates": {lat: "30.408704", lng: "-91.015029"},
         "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817",
         "hasApplePay": false
     }

@@ -7,16 +7,20 @@
 
 ## Run Project
 
-Client:
+**Client:**
 
 cd applepayfinder/
+
 yarn add
 
-Server:
+**Server:**
 
-mongod (need Mongodb installed)\
-cd backend/\
+mongod (need Mongodb installed)
+
+cd backend/
+
 yarn add\
+
 yarn run dev
 
 
@@ -28,4 +32,4 @@ Find Apple Pay accepting establishments from a user curated repository of verifi
 
 Demo:
 -----
-![](demo/home_page.png)
+![](demo/home_page.gif)

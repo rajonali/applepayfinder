@@ -71,7 +71,6 @@ export class MapContainer extends React.Component {
       response => {
       var lat = response.results[0].geometry.location['lat'];
       var lng = response.results[0].geometry.location['lng'];
-      console.log(lat,lng);
     },
       error => {
         console.error(error);
