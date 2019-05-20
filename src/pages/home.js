@@ -33,23 +33,38 @@ class Home extends Component {
 
     componentDidMount(props) {
         //console.log(this.state.places); console.log(['das','asda']);
+        navigator.geolocation.getCurrentPosition(
+            position => {
+              const { latitude, longitude } = position.coords;
+      
+              this.setState({
+                userLocation: { lat: latitude, lng: longitude },
+                loading: false,
+                placeData: this.props.placeData
+              });
+            })
     }
 
     submitForReview(address) {
         console.log({address});
     }
 
+
+    
     render() {
         return (
             <div>
+
                 <body style={{
-                    margin: 10
+                    paddingBottom:'95px'
                 }}>
-                    <div class="container">
+                    <div class="container" style={{
+                   
+                }}>
 
-                        <div class="row">
+                        <div class="row" style={{flexDirection: 'row'}}>
 
-                            <div class="col">
+                            <div class="col-sm-8" style={{flex:1}}>
                                 <center>
                                     <br/>
                                     <script
@@ -57,14 +72,14 @@ class Home extends Component {
                                         async
                                         defer></script>
 
-                                    <MapContainer placeData={this.state.listed_places}/>
+                                    <MapContainer style={{ position:'relative'}}placeData={this.state.listed_places}/>
                                 </center>
                             </div>
 
-                            <div class="col">
+                            <div class="col-sm-4" style={{paddingLeft:'30px'}}>
                                 <br/>
 
-                                <InputGroup>
+                              <InputGroup>
                                     <Input
                                         onChange={this
                                         .handleChange
@@ -75,7 +90,7 @@ class Home extends Component {
                                         </Button>
                                     </InputGroupAddon>
                                 </InputGroup>
-                                <br/>
+                                
                                 <h1>{this.state.input}</h1>
 <div>
                                 {this
@@ -83,23 +98,20 @@ class Home extends Component {
                                     .listed_places
                                     .map(p => (
                                         <div>
-                                            <Card>
+                                            <Card style={{height:'200px'}}>
                                                 <CardBody>
                                                     <CardTitle>
-                                                        <strong>{p.name}</strong>
+                                                        <h3><strong>{p.name}</strong></h3>
 
                                                     </CardTitle>
                                                     <CardSubtitle className="text-muted">{p.address}</CardSubtitle>
                                                     <br />
-                                                    <p>{p.hasApplePay
-                                                            ? <Badge
-                                                                    class="align-middle"
-                                                                    style={{
-                                                                    fontSize: '15px'
-                                                                }}
-                                                                    color="success">✓ Accepts Apple Pay</Badge>
-                                                                    :
-                                                             <CaptchaModal address={p.address} submitted={this.state.submitted}/>}</p>
+                                                    {p.hasApplePay ?
+                                                    <h5 style={{color:'black'}}><Badge color="success"><strong>✓ Accepts Apple Pay</strong></Badge></h5>
+                                                    :
+                                                    <CaptchaModal address={p.address} submitted={this.state.submitted}/>}
+                                                    <p>
+                                                             </p>
                                                 </CardBody>
                                             </Card><br/></div>
                                     ))}

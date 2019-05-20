@@ -75,12 +75,12 @@ class CaptchaModal extends React.Component {
                     toggle={this.toggle2}
                     className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Submit Location For Review</ModalHeader>
-                    <ModalBody style={{padding:'10px'}}>
+                    <ModalBody style={{padding:'30px'}}>
+                    
                     <strong>📌 {this.props.address}</strong> <br /><br />
                      We will verify this location and add it as a valid Apple Pay accepting location as soon as possible:<br /><br /><strong>
-                     
-                     <p>Name: <input></input></p></strong>
-                        <Button style={{width:'100%'}} color="primary" onClick={() => this.toggle2()}>Submit</Button>
+                     </strong>
+                        <Button style={{width:'100%'}} color="primary" onClick={() => this.toggle2()}><strong>Submit</strong></Button>
 
                     </ModalBody>
 

@@ -85,7 +85,6 @@ export class MapContainer extends React.Component {
 
   
   render() {
-    this.getCoordsFromAddr('11310 Airline Hwy, Baton Rouge, LA 70816');
 
     const { loading, userLocation } = this.state;
     const { google } = this.props;
@@ -96,9 +95,7 @@ export class MapContainer extends React.Component {
     }
 
     return (
-      <div>
-
-    <Map google={google} initialCenter={userLocation} zoom={1} style={{  width: '95%', height: '625px'}}>
+    <Map google={google} initialCenter={userLocation} zoom={13} style={{ height: '95%'}}>
   
 
 {this
@@ -117,8 +114,7 @@ export class MapContainer extends React.Component {
 
 
     </Map>
-    </div>
-    )
+      )
   }
 }
 
