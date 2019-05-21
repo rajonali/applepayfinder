@@ -13,6 +13,8 @@ cd applepayfinder/
 
 yarn install
 
+yarn run start
+
 **Server:**
 
 mongod (need Mongodb installed)
