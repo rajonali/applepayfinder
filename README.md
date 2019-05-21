@@ -11,7 +11,7 @@
 
 cd applepayfinder/
 
-yarn add
+yarn install
 
 **Server:**
 
@@ -19,7 +19,7 @@ mongod (need Mongodb installed)
 
 cd backend/
 
-yarn add\
+yarn install
 
 yarn run dev
 
