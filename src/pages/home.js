@@ -17,6 +17,10 @@ import {
 
 import CaptchaModal from '../components/captchaModal';
 
+
+import GoogleSuggest from '../components/googleSuggest';
+
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +40,7 @@ class Home extends Component {
     }
 
     submitForReview(address) {
-        console.log({address});
+        console.log({address}); 
     }
 
     render() {
@@ -52,7 +56,7 @@ class Home extends Component {
 
                         <div class="row" style={{flexDirection: 'row'}}>
 
-                            <div class="col-sm-8" style={{flex:1}}>
+                            <div class="col-sm-8" style={{height:'500px'}}>
                                 <center>
                                     <br/>
                                     <script
@@ -60,26 +64,21 @@ class Home extends Component {
                                         async
                                         defer></script>
 
-                                    <MapContainer style={{ position:'relative'}}placeData={this.state.listed_places}/>
+                                    <MapContainer style={{ position:'relative'}} placeData={this.state.listed_places}/>
                                 </center>
                             </div>
 
                             <div class="col-sm-4" style={{paddingLeft:'30px'}}>
                                 <br/>
 
-                              <InputGroup>
-                                    <Input
-                                        onChange={this
-                                        .handleChange
-                                        .bind(this)}/>
-                                    <InputGroupAddon addonType="append">
-                                        <Button onClick={this.onClickSearch} color="secondary">
-                                            <strong>🔎</strong>
-                                        </Button>
-                                    </InputGroupAddon>
-                                </InputGroup>
+                            
+<GoogleSuggest />
+                                
                                 
                                 <h1>{this.state.input}</h1>
+
+
+                                {/* 
 <div>
                                 {this
                                     .state
@@ -104,6 +103,11 @@ class Home extends Component {
                                             </Card><br/></div>
                                     ))}
                                     </div>
+
+
+                                    */}
+
+
 
                             </div>
 

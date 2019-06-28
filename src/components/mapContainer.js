@@ -94,7 +94,7 @@ export class MapContainer extends React.Component {
     }
 
     return (
-    <Map google={google} initialCenter={userLocation} zoom={13} style={{ height: '95%'}}>
+    <Map google={google} initialCenter={userLocation} zoom={13} style={{   width: '100%',  height: '100%'}}>
   
 
 {this
