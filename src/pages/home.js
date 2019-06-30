@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 import MapContainer from '../components/mapContainer';
 import {
     Card,
@@ -20,8 +21,14 @@ import CaptchaModal from '../components/captchaModal';
 
 import GoogleSuggest from '../components/googleSuggest';
 
+import {connect} from 'react-redux';
+import { selectLocation } from '../js/actions/index'
+
+  
 
 class Home extends Component {
+
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +36,16 @@ class Home extends Component {
             listed_places: googlePlacesMockData,
             submitted: false
         };
+        this.selectLocation = this.selectLocation.bind(this);
+
     }
+
+
+
+    selectLocation(){
+        this.props.onUpdateLocation("13033 Carrington Place Ave");
+    }
+
 
     handleChange(e) {
         this.setState({input: e.target.value});
@@ -76,6 +92,9 @@ class Home extends Component {
                                 
                                 
                                 <h1>{this.state.input}</h1>
+                                <div onClick={this.selectLocation}>UPDATE LOCATION</div>
+        {JSON.stringify(this.props)}
+
 
 
                                 {/* 
@@ -177,4 +196,14 @@ const googlePlacesMockData = [
     }
 ]
 
-export default Home;
+const mapStateToProps = state => ({
+    SELECT_LOCATIONS: state
+  });
+  
+  
+  const mapActionsToProps = {
+   onUpdateLocation: selectLocation
+  }
+  
+  export default connect(mapStateToProps, mapActionsToProps)(Home);
+  
