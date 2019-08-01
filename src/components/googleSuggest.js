@@ -2,9 +2,6 @@ import React, {Component} from "react"
 import ReactGoogleMapLoader from "react-google-maps-loader"
 import ReactGooglePlacesSuggest from "react-google-places-suggest"
  
-
-
-
 import {
     Card,
     CardImg,
@@ -20,13 +17,25 @@ import {
 } from 'reactstrap';
 
 
+import {connect} from 'react-redux';
+
+
+import { selectLocation } from '../js/actions/index'
+
+
+
+
 const MY_API_KEY = "AIzaSyCAKYwzvX26frpBq3Wi_d483YybzulqaLw" // fake
  
-export default class GoogleSuggest extends React.Component {
+class GoogleSuggest extends React.Component {
     state = {
         search: "",
         value: "",
 
+    }
+
+    componentWillMount(){
+        this.props.selectLocation();
     }
     
  
@@ -35,8 +44,16 @@ export default class GoogleSuggest extends React.Component {
     }
  
     handleSelectSuggest = (geocodedPrediction, originalPrediction) => {
-        console.log(geocodedPrediction, originalPrediction) // eslint-disable-line
-        this.setState({search: "", value: geocodedPrediction.formatted_address})
+        //console.log(geocodedPrediction, originalPrediction) // eslint-disable-line
+        //this.setState({value: geocodedPrediction.formatted_address})
+        //console.log("Address:" + this.state.value)
+        //console.log("STATE"+JSON.stringify(this.state));
+        console.log(originalPrediction)
+        var newObj = {
+            name: originalPrediction.description,
+            address: geocodedPrediction.formatted_address
+        }
+        this.props.selectLocation(newObj.name)
     }
     
     handleNoResult = () => {
@@ -44,7 +61,7 @@ export default class GoogleSuggest extends React.Component {
     }
  
     handleStatusUpdate = (status) => {
-        console.log(status)
+        //console.log(status)
     }
  
     render() {
@@ -89,7 +106,9 @@ export default class GoogleSuggest extends React.Component {
 
                                                     </CardTitle>
                                                     <CardSubtitle className="text-muted">
-                                                    {console.log(prediction)}
+                                                    {
+                                                        //console.log("BUDDA" + JSON.stringify(prediction))
+                                                    }
                                                     {prediction
                                         ? prediction.description
                                         : "Please try again"}
@@ -111,7 +130,7 @@ export default class GoogleSuggest extends React.Component {
                                 type="text"
                                 value={value}
                                 placeholder="Search a location"
-                                onChange={this.handleInputChange}/>
+                                onChange={this.handleInputChange} />
                                     <InputGroupAddon addonType="append">
                                         <Button onClick={this.onClickSearch} color="secondary">
                                             <strong>🔎</strong>
@@ -125,3 +144,5 @@ export default class GoogleSuggest extends React.Component {
         )
     }
 }
+
+  export default connect(null, { selectLocation })(GoogleSuggest);

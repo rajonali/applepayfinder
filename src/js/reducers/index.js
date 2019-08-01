@@ -1,11 +1,8 @@
-import { SELECT_LOCATION } from "../constants/action-types";
+import { combineReducers } from 'redux';
+import currLocation from './currLocation';
 
-
-function rootReducer(state, action) {
-  if (action.type === SELECT_LOCATION) {
-    return action.payload
-    };
+export default combineReducers(
+  {
+    currLocation: currLocation
   }
-
-  
-export default rootReducer;
+);
