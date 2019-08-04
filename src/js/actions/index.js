@@ -6,7 +6,7 @@ export function selectLocation(payload) {
       //console.log("select location action called!")
       dispatch({
         type:  SELECT_LOCATION,
-        payload: payload
+        payload: { ...payload }
       })
     }
         

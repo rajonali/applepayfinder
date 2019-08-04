@@ -24,20 +24,18 @@ class PlaceDetailsCard extends Component {
     
     constructor(props) {
         super(props);
-        this.state = {
-            submitted: false
-        };
-
     }
 
     render() {
         return (
             <div><br />
-                <Card>
-                    <CardTitle>{ this.props.userSelected }</CardTitle>
+                <Card style={{padding:10}}>
+                    <CardTitle><strong>{ this.props.locationName }</strong></CardTitle>
                     <CardBody>
-                    <p>{ this.props.userSelected }</p>
+                    <p>{ this.props.locationAddr }</p>
                     </CardBody>
+                    <span class="badge badge-success">Verified</span>
+
                 </Card>
             </div>
         )
@@ -46,7 +44,8 @@ class PlaceDetailsCard extends Component {
 
 
 const mapStateToProps = state => ({
-    userSelected: state.currLocation.selectedAddr
+    locationName: state.currLocation.selectedLocation.name,
+    locationAddr: state.currLocation.selectedLocation.address
   });
   
   

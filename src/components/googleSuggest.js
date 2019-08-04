@@ -53,7 +53,7 @@ class GoogleSuggest extends React.Component {
             name: originalPrediction.description,
             address: geocodedPrediction.formatted_address
         }
-        this.props.selectLocation(newObj.name)
+        this.props.selectLocation(newObj)
     }
     
     handleNoResult = () => {
