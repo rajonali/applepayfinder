@@ -3,8 +3,6 @@ import { SELECT_LOCATION } from "../constants/action-types";
 
 
 const initialState = {
-
-    selectedLocation : {name:"", address:""}
   
 };
 
