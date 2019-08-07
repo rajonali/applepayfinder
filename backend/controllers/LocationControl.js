@@ -40,6 +40,28 @@ module.exports = {
                 res.json({success: false, result: err})
             })
     },
+    
+
+    retrieve_by_address: (req, res) => {
+        LocationModel.find({
+            "locationAddress": req.body.locationAddress
+        }, function (err, obj) {
+            //res.json(obj);
+        })
+            .select({"locationName": 1, "locationAddress" : 1})
+            .then(query => {
+
+                
+                res.send(query);
+                
+            })
+            .catch(err => {
+                res
+                    .status(400)
+                    .send("Update not possible");
+            });
+    },
+
 
     delete: (req, res) => {
         LocationModel

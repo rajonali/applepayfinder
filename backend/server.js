@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express();
+var cors = require('cors');
 
 
 //DB
@@ -17,7 +18,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/location-manager', {useNewUrlParser:
 
 
 //Middleware
-
+app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -31,7 +32,11 @@ const LocationControl = require('./controllers/LocationControl');
 app.post('/api/location/submit', LocationControl.create);
 app.post('/api/location/update', LocationControl.update);
 app.get('/api/location/retrieve', LocationControl.retrieve);
+app.post('/api/location/retrieve_by_address', LocationControl.retrieve_by_address);
 app.delete('/api/location/delete', LocationControl.delete);
+
+
+
 
 //Start server
 

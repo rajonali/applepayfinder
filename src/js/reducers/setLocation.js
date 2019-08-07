@@ -3,7 +3,7 @@ import { SET_LOCATION } from "../constants/action-types";
 
 
 const initialState = {
-  
+  selectedLocation: ""
 };
 
 function setLocation(state = initialState, action) {

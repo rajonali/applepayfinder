@@ -16,7 +16,7 @@ export function setLocation(payload) {
 
 export function queryLocation(payload) {
   return function (dispatch) {
-    //console.log("select location action called!")
+    console.log("query location action called!")
     dispatch({
       type:  QUERY_LOCATION,
       payload: { ...payload }

@@ -20,7 +20,7 @@ import {
 import {connect} from 'react-redux';
 
 
-import { setLocation } from '../js/actions/index'
+import { setLocation, queryLocation} from '../js/actions/index'
 
 
 
@@ -35,7 +35,7 @@ class GoogleSuggest extends React.Component {
     }
 
     componentWillMount(){
-        this.props.setLocation();
+
     }
     
  
@@ -54,6 +54,7 @@ class GoogleSuggest extends React.Component {
             address: geocodedPrediction.formatted_address
         }
         this.props.setLocation(newObj)
+        this.props.queryLocation(JSON.stringify(geocodedPrediction.formatted_address))
     }
     
     handleNoResult = () => {
@@ -145,4 +146,4 @@ class GoogleSuggest extends React.Component {
     }
 }
 
-  export default connect(null, { setLocation })(GoogleSuggest);
+  export default connect(null, { setLocation, queryLocation })(GoogleSuggest);

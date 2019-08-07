@@ -1,19 +1,34 @@
 import { QUERY_LOCATION } from "../constants/action-types";
 
+const axios = require('axios');
 
 
 const initialState = {
+    queriedLocation: ""
   
 };
 
 function queryLocation(state = initialState, action) {
-  //console.log("ACTION.PAYYLOAD: "+ JSON.stringify(action.payload))
+console.log("QUERIED LOCATION: "+ action.payload)
   switch(action.type) {
     case QUERY_LOCATION:
-        console.log("LOCATION QUERIED")
+            axios
+            .post('http://localhost:3000/api/location/retrieve_by_address', { address: action.payload} )
+            .then(response => {
+                console.log("RETRIEVE LOCATION" + JSON.stringify(response))
+                //this.setState({transactions: response.data});
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+
+
+
       return {
         ...state,
-        queryLocation : action.payload
+        queriedLocation : action.payload
       }
     default:
       return state;
