@@ -1,4 +1,4 @@
-import { SELECT_LOCATION } from "../constants/action-types";
+import { SET_LOCATION } from "../constants/action-types";
 
 
 
@@ -6,10 +6,10 @@ const initialState = {
   
 };
 
-function currLocation(state = initialState, action) {
+function setLocation(state = initialState, action) {
     console.log("ACTION.PAYYLOAD: "+ JSON.stringify(action.payload))
   switch(action.type) {
-    case SELECT_LOCATION:
+    case SET_LOCATION:
       return {
         ...state,
         selectedLocation : action.payload
@@ -20,4 +20,4 @@ function currLocation(state = initialState, action) {
 }
 
 
-export default currLocation;
+export default setLocation;

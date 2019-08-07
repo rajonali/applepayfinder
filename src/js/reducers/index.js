@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import currLocation from './currLocation';
+import setLocation from './setLocation';
+import queryLocation from './queryLocation';
 
 export default combineReducers(
   {
-    currLocation: currLocation
+    setLocation: setLocation,
+    queryLocation: queryLocation
   }
 );

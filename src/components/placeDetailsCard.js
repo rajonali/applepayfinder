@@ -14,7 +14,7 @@ import {
 } from 'reactstrap';
 
 import {connect} from 'react-redux';
-import { selectLocation } from '../js/actions/index'
+import { setLocation } from '../js/actions/index'
 
 
 
@@ -44,8 +44,8 @@ class PlaceDetailsCard extends Component {
 
 
 const mapStateToProps = state => ({
-    locationName: state.currLocation.selectedLocation.name,
-    locationAddr: state.currLocation.selectedLocation.address
+    locationName: state.setLocation.selectedLocation.name,
+    locationAddr: state.setLocation.selectedLocation.address
   });
   
   

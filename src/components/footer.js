@@ -4,19 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 import {connect} from 'react-redux';
-import { selectLocation } from '../js/actions/index'
 
 
 class Footer extends Component {
 
 constructor(props){
     super(props);
-    this.selectLocation = this.selectLocation.bind(this);
 }
 
-    selectLocation(){
-        this.props.onUpdateLocation({SELECT_LOCATION:"13033 Carrington Place Ave"});
-    }
 
 
     render() {
@@ -38,14 +33,5 @@ constructor(props){
 }
 
 
-const mapStateToProps = state => ({
-    SELECT_LOCATION: state
-  });
-  
-  
-  const mapActionsToProps = {
-   onUpdateLocation: selectLocation
-  }
-  
-  export default connect(mapStateToProps, mapActionsToProps)(Footer);
+export default Footer;
   

@@ -1,15 +1,30 @@
-import {SELECT_LOCATION} from "../constants/action-types";
+import {SET_LOCATION, QUERY_LOCATION} from "../constants/action-types";
 
 
-export function selectLocation(payload) {
+
+export function setLocation(payload) {
     return function (dispatch) {
       //console.log("select location action called!")
       dispatch({
-        type:  SELECT_LOCATION,
+        type:  SET_LOCATION,
         payload: { ...payload }
       })
     }
         
 }
+
+
+export function queryLocation(payload) {
+  return function (dispatch) {
+    //console.log("select location action called!")
+    dispatch({
+      type:  QUERY_LOCATION,
+      payload: { ...payload }
+    })
+  }
+      
+}
+
+
 
 

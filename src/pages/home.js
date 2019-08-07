@@ -21,7 +21,7 @@ import PlaceDetailsCard from '../components/placeDetailsCard';
 import GoogleSuggest from '../components/googleSuggest';
 
 import {connect} from 'react-redux';
-import {selectLocation} from '../js/actions/index'
+import {setLocation} from '../js/actions/index'
 
 class Home extends Component {
 
@@ -216,7 +216,7 @@ const googlePlacesMockData = [
 const mapStateToProps = state => ({mystate: state});
 
 const mapActionsToProps = {
-    onUpdateLocation: selectLocation
+    onUpdateLocation: setLocation
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(Home);
