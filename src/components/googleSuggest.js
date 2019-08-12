@@ -22,6 +22,7 @@ import {connect} from 'react-redux';
 
 import { setLocation, queryLocation} from '../js/actions/index'
 
+const axios = require('axios');
 
 
 
@@ -43,18 +44,43 @@ class GoogleSuggest extends React.Component {
         this.setState({search: e.target.value, value: e.target.value})
     }
  
+
+    queryLercation = (address) => {
+        var data = {
+            locationAddress: address
+        }
+        //console.log(action.payload)
+
+         axios
+          //change location address to action.payload
+          .post('http://localhost:3000/api/location/retrieve_by_address', data)
+          .then(response => {
+            var newData = response.data[0]
+            console.log("newddata"+JSON.stringify(newData));
+            this.props.setLocation(newData);
+            //return newData
+          })
+          .catch(function (error) {
+              console.log(error);
+          })
+
+
+    }
+
     handleSelectSuggest = (geocodedPrediction, originalPrediction) => {
         //console.log(geocodedPrediction, originalPrediction) // eslint-disable-line
         //this.setState({value: geocodedPrediction.formatted_address})
         //console.log("Address:" + this.state.value)
         //console.log("STATE"+JSON.stringify(this.state));
-        console.log(originalPrediction)
+        //console.log(originalPrediction)
         var newObj = {
             name: originalPrediction.description,
             address: geocodedPrediction.formatted_address
         }
-        this.props.setLocation(newObj)
-        this.props.queryLocation(JSON.stringify(geocodedPrediction.formatted_address))
+        //this.props.setLocation(newObj)
+        //console.log(newObj.address)
+        this.queryLercation(newObj.address)
+        //this.props.queryLocation(newObj.address)
     }
     
     handleNoResult = () => {
@@ -64,6 +90,8 @@ class GoogleSuggest extends React.Component {
     handleStatusUpdate = (status) => {
         //console.log(status)
     }
+
+
  
     render() {
         const {search, value} = this.state

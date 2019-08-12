@@ -48,12 +48,9 @@ module.exports = {
         }, function (err, obj) {
             //res.json(obj);
         })
-            .select({"locationName": 1, "locationAddress" : 1})
+            .select({"locationName": 1, "locationAddress" : 1, "verified": 1})
             .then(query => {
-
-                
                 res.send(query);
-                
             })
             .catch(err => {
                 res

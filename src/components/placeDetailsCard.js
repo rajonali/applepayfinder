@@ -34,8 +34,9 @@ class PlaceDetailsCard extends Component {
                     <CardBody>
                     <p>{ this.props.locationAddr }</p>
                     </CardBody>
-                    <span class="badge badge-success">Verified</span>
-
+                    { this.props.locationVerified ?
+                      (<span class="badge badge-success">Verified</span>) : (<span class="badge badge-danger">Unverified</span>)
+                }
                 </Card>
             </div>
         )
@@ -44,8 +45,9 @@ class PlaceDetailsCard extends Component {
 
 
 const mapStateToProps = state => ({
-    locationName: state.setLocation.selectedLocation.name,
-    locationAddr: state.setLocation.selectedLocation.address
+    locationName: state.setLocation.selectedLocation.locationName,
+    locationAddr: state.setLocation.selectedLocation.locationAddress,
+    locationVerified: state.setLocation.selectedLocation.verified
   });
   
   

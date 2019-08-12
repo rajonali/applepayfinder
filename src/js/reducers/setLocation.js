@@ -7,9 +7,10 @@ const initialState = {
 };
 
 function setLocation(state = initialState, action) {
-    console.log("ACTION.PAYYLOAD: "+ JSON.stringify(action.payload))
+  //console.log("ACTION.PAYYLOAD: "+ JSON.stringify(action.payload))
   switch(action.type) {
     case SET_LOCATION:
+        console.log("ACTION.PAYYLOAD: "+ JSON.stringify(action.payload))
       return {
         ...state,
         selectedLocation : action.payload
