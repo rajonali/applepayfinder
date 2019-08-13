@@ -17,6 +17,7 @@ import {connect} from 'react-redux';
 import { setLocation } from '../js/actions/index'
 
 
+const axios = require('axios');
 
 
 class PlaceDetailsCard extends Component {
@@ -27,7 +28,25 @@ class PlaceDetailsCard extends Component {
     }
 
     onClickReview = () => {
-        console.log("SUBMITTED" + this.props.locationName);
+        var data = {
+            locationAddress: this.props.locationAddr,
+            locationName: this.props.locationName,
+        }
+        //console.log(action.payload)
+
+         axios
+          //change location address to action.payload
+          .post('http://localhost:3000/api/location/pending_verified', data)
+          .then(response => {
+            //var newData = response.data[0]
+            //console.log("newddata"+JSON.stringify(response.data));
+            console.log("SUBMITTED LOCATION FOR VERIFICATION")
+            //return newData
+          })
+          .catch(function (error) {
+              console.log(error);
+          })
+
 
     }
     render() {
