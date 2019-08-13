@@ -46,11 +46,24 @@ module.exports = {
         LocationModel.find({
             "locationAddress": req.body.locationAddress
         }, function (err, obj) {
-            //res.json(obj);
+
+            if (obj.length < 1){
+            res.json(
+                {"locationName": req.body.locationName,
+                "locationAddress": req.body.locationAddress,
+                "verified": false,
+                }
+            );
+
+            }
+
+            else {
+                return 
+            }
         })
             .select({"locationName": 1, "locationAddress" : 1, "verified": 1})
             .then(query => {
-                res.send(query);
+                res.send(query[0]);
             })
             .catch(err => {
                 res

@@ -45,9 +45,11 @@ class GoogleSuggest extends React.Component {
     }
  
 
-    queryLercation = (address) => {
+    queryLercation = (address, name) => {
         var data = {
-            locationAddress: address
+            locationAddress: address,
+            locationName: name,
+            verified: false
         }
         //console.log(action.payload)
 
@@ -55,9 +57,9 @@ class GoogleSuggest extends React.Component {
           //change location address to action.payload
           .post('http://localhost:3000/api/location/retrieve_by_address', data)
           .then(response => {
-            var newData = response.data[0]
-            console.log("newddata"+JSON.stringify(newData));
-            this.props.setLocation(newData);
+            //var newData = response.data[0]
+            //console.log("newddata"+JSON.stringify(response.data));
+            this.props.setLocation(response.data);
             //return newData
           })
           .catch(function (error) {
@@ -79,7 +81,7 @@ class GoogleSuggest extends React.Component {
         }
         //this.props.setLocation(newObj)
         //console.log(newObj.address)
-        this.queryLercation(newObj.address)
+        this.queryLercation(newObj.address, newObj.name)
         //this.props.queryLocation(newObj.address)
     }
     
