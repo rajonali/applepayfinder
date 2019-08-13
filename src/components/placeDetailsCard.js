@@ -26,6 +26,10 @@ class PlaceDetailsCard extends Component {
         super(props);
     }
 
+    onClickReview = () => {
+        console.log("SUBMITTED" + this.props.locationName);
+
+    }
     render() {
         return (
             <div><br />
@@ -35,7 +39,10 @@ class PlaceDetailsCard extends Component {
                     <p>{ this.props.locationAddr }</p>
                     </CardBody>
                     { this.props.locationVerified ?
-                      (<span class="badge badge-success">Verified</span>) : (<span class="badge badge-danger">Unverified</span>)
+                      (<button type="button" class="btn btn-outline-success" disabled><strong>Verified</strong></button>
+                      ) : (<button type="button" onClick={this.onClickReview.bind(this)} class="btn btn-danger"><strong>Submit for review</strong></button>
+                      )
+
                 }
                 </Card>
             </div>

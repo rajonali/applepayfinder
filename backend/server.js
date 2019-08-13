@@ -35,6 +35,9 @@ app.get('/api/location/retrieve', LocationControl.retrieve);
 app.post('/api/location/retrieve_by_address', LocationControl.retrieve_by_address);
 app.delete('/api/location/delete', LocationControl.delete);
 
+app.post('/api/location/pending_verified', LocationControl.pending_verified);
+
+
 
 
 

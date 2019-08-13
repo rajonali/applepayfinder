@@ -1,5 +1,8 @@
 const LocationModel = require('../models/LocationModel');
 
+const PendingModel = require('../models/PendingModel');
+
+
 module.exports = {
     create: (req, res) => {
         let location = new LocationModel({locationName: req.body.location_name, locationAddress: req.body.location_address, verified: req.body.location_verified});
@@ -27,6 +30,19 @@ module.exports = {
         });
     },
 
+    pending_verified: (req, res) => {
+        let pending = new PendingModel({locationName: req.body.locationName, locationAddress: req.body.locationAddress});
+
+        pending
+            .save()
+            .then(result => {
+                res.json({success: true, result: result});
+            })
+            .catch(err => {
+                res.json({success: false, result: err});
+            })
+
+    },
     retrieve: (req, res) => {
         LocationModel
             .find()
