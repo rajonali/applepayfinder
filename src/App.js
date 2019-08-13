@@ -17,7 +17,6 @@ function App(){
         <h1>🍎 Pay <strong>Finder v1</strong></h1>
       </header>
       <Home />
-      <Footer />
     </div>
   );
 
