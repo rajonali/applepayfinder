@@ -3,6 +3,7 @@ import {
     Card,
     CardImg,
     CardText,
+    CardHeader,
     CardBody,
     CardTitle,
     CardSubtitle,
@@ -52,17 +53,24 @@ class PlaceDetailsCard extends Component {
     render() {
         return (
             <div><br />
-                <Card style={{padding:10}}>
-                    <CardTitle><strong>{ this.props.locationName }</strong></CardTitle>
-                    <CardBody>
-                    <p>{ this.props.locationAddr }</p>
-                    </CardBody>
-                    { this.props.locationVerified ?
-                      (<button type="button" class="btn btn-outline-success" disabled><strong>Verified</strong></button>
-                      ) : (<button type="button" onClick={this.onClickReview.bind(this)} class="btn btn-danger"><strong>Submit for review</strong></button>
-                      )
+                <Card style={{margin:10}}>
+                    <CardHeader style={{backgroundColor:'#282c34'}}>
+<h3 style={{color:"white"}}><strong>{ this.props.locationName }</strong></h3>
+                    </CardHeader>
+                    <CardBody >
+                    <h6>{ this.props.locationAddr }</h6>
 
+                    <div style={{paddingTop:'10px'}}>
+                    { this.props.locationVerified ?
+                      (<button style={{width:'100%'}} type="button" class="btn btn-outline-success" disabled><strong>Verified</strong></button>
+                      ) : (<button type="button" style={{width:'100%'}} onClick={this.onClickReview.bind(this)} class="btn btn-danger"><strong>Submit for review</strong></button>
+                      )
                 }
+
+</div>
+                                    </CardBody>
+
+                
                 </Card>
             </div>
         )
