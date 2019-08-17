@@ -15,9 +15,10 @@ export default class Pending extends Component {
     }
 
 
-    getLocations(){
+    locations = []
 
-        var self = this;
+
+    getLocations(){
         
         axios
         //change location address to action.payload
@@ -25,15 +26,22 @@ export default class Pending extends Component {
         .then(response => {
           //var newData = response.data[0]
           //console.log("newddata"+JSON.stringify(response.data));
-        var locations = response.data.results;
-          this.setState({
-              locations
-          })
-
+          //console.log(response.data.result[0]["locationName"])
+          for (var i=0;i < response.data.result.length; i++  ){
+              this.locations.push(response.data.result[i]["locationName"]);
+              this.setState({
+                locations: this.state.locations.concat(response.data.result[i]["locationName"])
+              })
+              
+          }
         })
         .catch(function (error) {
             console.log(error);
         })
+
+        console.log(this.locations)
+        console.log(this.state.locations)
+
 
     }
 
@@ -49,12 +57,15 @@ export default class Pending extends Component {
         return (
             <div>
                 <br />
-                <h3><strong>Pending Locations:</strong></h3>
-                
+                <h3><i>Pending Locations:</i></h3><br />
+                <ul class="list-group">
+
                 {
+                                this.locations.map(location => <li class="list-group-item">{location}</li>)
                     
                 }
-                
+                </ul>
+
             </div>
         )
     }
