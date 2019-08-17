@@ -18,6 +18,8 @@ import {connect} from 'react-redux';
 import { setLocation } from '../js/actions/index'
 
 
+import Geocode from "react-geocode";
+
 const axios = require('axios');
 
 
@@ -28,13 +30,35 @@ class PlaceDetailsCard extends Component {
         super(props);
     }
 
+
+
+    getCoordsFromAddr(address) {
+        Geocode
+            .fromAddress(address)
+            .then(response => {
+                var lat = response.results[0].geometry.location['lat'];
+                var lng = response.results[0].geometry.location['lng'];
+
+                return { 
+                  lat: lat,
+                  lng: lng
+                }
+            }, error => {
+                console.error(error);
+            })
+
+    }
+
     onClickReview = () => {
         var data = {
             locationAddress: this.props.locationAddr,
             locationName: this.props.locationName,
+            coordinates : {}
         }
         //console.log(action.payload)
 
+
+        
          axios
           //change location address to action.payload
           .post('http://localhost:3000/api/location/pending_verified', data)
@@ -60,6 +84,9 @@ class PlaceDetailsCard extends Component {
                     <CardBody >
                     <h6>{ this.props.locationAddr }</h6>
 
+{  
+
+
                     <div style={{paddingTop:'10px'}}>
                     { this.props.locationVerified ?
                       (<button style={{width:'100%'}} type="button" class="btn btn-outline-success" disabled><strong>Verified</strong></button>
@@ -67,8 +94,11 @@ class PlaceDetailsCard extends Component {
                       )
                 }
 
-</div>
-                                    </CardBody>
+            </div>
+
+}
+
+</CardBody>
 
                 
                 </Card>

@@ -125,65 +125,7 @@ class Home extends Component {
     }
 }
 
-const listedPlacesMockData = [
-    {
-        "name": "McDonalds",
-        "coordinates": {
-            lat: 30.403849,
-            lng: -91.053273
-        },
-        "address": "4979 Jones Creek Rd, Baton Rouge, LA 70817",
-        "hasApplePay": true
-    }, {
-        "name": "Taco Bell",
-        "coordinates": {
-            lat: 29.973993,
-            lng: -90.143369
-        },
-        "address": "1601 Airline Dr, Metairie, LA 70001",
-        "hasApplePay": false
-    }, {
-        "name": "Wendy's",
-        "coordinates": {
-            lat: 30.408704,
-            lng: -91.015029
-        },
-        "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817",
-        "hasApplePay": false
-    }, {
-        "name": "Bob's Car Shop",
-        "coordinates": {
-            lat: -26.11069,
-            lng: 100.19747
-        },
-        "address": "2916 Jefferson Hwy, Jefferson, LA 70121",
-        "hasApplePay": false
-    }, {
-        "name": "Sally's Nails",
-        "coordinates": {
-            lat: 48.65831,
-            lng: -36.89748
-        },
-        "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817",
-        "hasApplePay": false
-    }, {
-        "name": "CVS Pharmacy",
-        "coordinates": {
-            lat: 50.06358,
-            lng: -129.64266
-        },
-        "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817",
-        "hasApplePay": false
-    }, {
-        "name": "VapingCraze",
-        "coordinates": {
-            lat: -75.30763,
-            lng: -41.20202
-        },
-        "address": "15295 George, O'Neal Ln, Baton Rouge, LA 70817",
-        "hasApplePay": false
-    }
-]
+
 
 const googlePlacesMockData = [
     {

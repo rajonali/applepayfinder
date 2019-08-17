@@ -5,7 +5,7 @@ const PendingModel = require('../models/PendingModel');
 
 module.exports = {
     create: (req, res) => {
-        let location = new LocationModel({locationName: req.body.location_name, locationAddress: req.body.location_address, verified: req.body.location_verified});
+        let location = new LocationModel({locationName: req.body.location_name, locationAddress: req.body.location_address, verified: req.body.location_verified, coordinates: req.body.coordinates});
 
         location
             .save()
@@ -28,6 +28,20 @@ module.exports = {
         }).catch(err => {
             res.json({success: false, result: err});
         });
+    },
+    get_pending_verified: (req, res) => {
+        PendingModel
+        .find()
+        .then(result => {
+            if (!result) 
+                res.json({success: false, result: "No results found"});
+            
+            res.json({success: true, result: result});
+        })
+        .catch(err => {
+            res.json({success: false, result: err})
+        })
+
     },
 
     pending_verified: (req, res) => {

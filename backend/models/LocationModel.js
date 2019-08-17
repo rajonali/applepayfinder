@@ -5,8 +5,8 @@ const location = new Schema({
 
     locationName: { type: String },
     locationAddress: { type: String },
-    verified: { type: Boolean }
-    
+    verified: { type: Boolean },
+    coordinates: { lat: {type: String} , lng: {type: String} }
 });
 
 
