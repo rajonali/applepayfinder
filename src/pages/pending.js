@@ -22,7 +22,7 @@ export default class Pending extends Component {
         
         axios
         //change location address to action.payload
-        .get('http://localhost:3000/api/location/get_pending_verified')
+        .get('/api/location/get_pending_verified')
         .then(response => {
           //var newData = response.data[0]
           //console.log("newddata"+JSON.stringify(response.data));

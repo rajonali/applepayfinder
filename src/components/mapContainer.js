@@ -28,7 +28,7 @@ export class MapContainer extends React.Component {
     componentDidMount(props) {
 
         axios
-            .get('http://localhost:3000/api/location/retrieve')
+            .get('/api/location/retrieve')
             .then(response => {
               this.setState({placeData: response.data.result});
             })

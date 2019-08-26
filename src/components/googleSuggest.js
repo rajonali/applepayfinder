@@ -55,7 +55,7 @@ class GoogleSuggest extends React.Component {
 
          axios
           //change location address to action.payload
-          .post('http://localhost:3000/api/location/retrieve_by_address', data)
+          .post('/api/location/retrieve_by_address', data)
           .then(response => {
             //var newData = response.data[0]
             //console.log("newddata"+JSON.stringify(response.data));
